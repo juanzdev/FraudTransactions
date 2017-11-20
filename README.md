@@ -28,3 +28,6 @@ Authorization: Basic YWRtaW5pc3RyYXRvcjpMb2NrZTMzNA==
 Cache-Control: no-cache
 Postman-Token: e8360a0d-8b1f-c3f5-f793-1c4f9fa9166f
 
+
+Note
+the: Authorization: Basic YWRtaW5pc3RyYXRvcjpMb2NrZTMzNA== line is the composition of UserName:Password encoded to a base64
