@@ -11,7 +11,7 @@ execute the script "1.Scripts\TransactionsDB_script.sql" this will create the da
 
 2. Instal SQL Server Data tools to be able to run the ETL, when ready, you can open the ETL solution and configure the two connection strings one for the database (target) and the other for the source file (kaggle source file), when you execute the ETL the kaggle CSV file will be loaded into the database specifically the transactions table(6M records more or less) and an index routine has been executed to speed up searches.
 Alternatively, you can configure the XML file called config.dtsConfig, and run a CMD with the following command 
-
+first go to the route where the package.dtsx is located and open a cmd window there to execute the command
 DTEXEC /f "Package.dtsx" /CONFIGFILE "config.dtsConfig""  /REPORTING V
 
 3. Web Application and Web API
