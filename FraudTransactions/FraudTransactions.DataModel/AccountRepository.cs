@@ -7,6 +7,9 @@ using System.Web;
 
 namespace FraudTransactions.DataModel
 {
+    /// <summary>
+    /// Repository that manages all the core operation with the database for user handling, it uses EF
+    /// </summary>
     public class AccountRepository : IAccountRepository
     {
         private AccountStore db = new AccountStore(System.Configuration.ConfigurationManager.ConnectionStrings["TransactionsDBEntities1"].ConnectionString);
@@ -39,6 +42,21 @@ namespace FraudTransactions.DataModel
         public FraudTransactions.Models.User Get(string userName)
         {
             var usr =  db.Users.Where(x => x.UserName == userName).FirstOrDefault();
+            if (usr == null)
+                return null;
+            FraudTransactions.Models.User user = new Models.User();
+            FraudTransactions.DataModel.User userDb = new FraudTransactions.DataModel.User();
+            user.Id = usr.Id;
+            user.Password = usr.Password;
+            user.UserName = usr.UserName;
+            user.RoleId = usr.RoleID;
+            user.Roles = usr.Role.Role1;
+            return user;
+        }
+
+        public FraudTransactions.Models.User GetByPassword(string userName,string password)
+        {
+            var usr = db.Users.Where(x => x.UserName == userName && x.Password==password).FirstOrDefault();
             if (usr == null)
                 return null;
             FraudTransactions.Models.User user = new Models.User();

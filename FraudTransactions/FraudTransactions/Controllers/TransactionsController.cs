@@ -5,16 +5,24 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using FraudTransactions.Models;
+using System.Net.Http.Headers;
+using System.Text;
+
 namespace FraudTransactions.Controllers
 {
+    /// <summary>
+    /// MVC Transactions controller, manages the page workflow and logic, it also calls all the transactions methods via the WEB API web service
+    /// </summary>
     public class HttpClientHelper
     {
         public static HttpClient GetHttpClient()
         {
             var MyHttpClient = new HttpClient();
-            dynamic _token = HttpContext.Current.Session["token"];
-           // if (_token == null) throw new ArgumentNullException(nameof(_token));
-           // MyHttpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", _token.AccessToken));
+            string _token = System.Web.HttpContext.Current.Session["username"] + ":" + System.Web.HttpContext.Current.Session["password"];
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(_token);
+            string base64 = System.Convert.ToBase64String(plainTextBytes);
+           //if (_token == null) throw new ArgumentNullException(nameof(_token));
+            MyHttpClient.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", base64));
             return MyHttpClient;
         }
     }
@@ -100,7 +108,6 @@ namespace FraudTransactions.Controllers
         public ActionResult Search(bool isFraud,string nameDest,string op, string term)
         {
             var httpClient = HttpClientHelper.GetHttpClient();
-
             HttpResponseMessage response = httpClient.GetAsync(baseUrl + "api/TransactionsApi/GetTransactionSearch?isFraud=" + isFraud +"&nameDest="+nameDest + "&op=" + op + "&term=" + term).Result;
             if (response.IsSuccessStatusCode)
             {

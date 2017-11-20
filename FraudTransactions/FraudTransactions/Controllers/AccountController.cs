@@ -9,6 +9,9 @@ using System.Web.Security;
 
 namespace FraudTransactions.Controllers
 {
+    /// <summary>
+    /// Controller for Account management
+    /// </summary>
     public class AccountController : Controller
     {
         static IAccountRepository _repository;
@@ -59,6 +62,9 @@ namespace FraudTransactions.Controllers
                 {
 
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    System.Web.HttpContext.Current.Session["username"] = user.UserName;
+                    System.Web.HttpContext.Current.Session["password"] = user.Password;
+                    //HttpContext.Current.Session["token"];
                     return RedirectToAction("Index", "Transactions");
                 }
                 else

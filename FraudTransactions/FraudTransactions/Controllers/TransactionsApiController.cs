@@ -8,6 +8,9 @@ using System.Web.Http;
 
 namespace FraudTransactions.Controllers
 {
+    /// <summary>
+    /// WEB API containing all the transactions operations, all of them can be consumed via REST but requires authentication
+    /// </summary>
     public class TransactionsApiController : ApiController
     {
 
@@ -27,12 +30,14 @@ namespace FraudTransactions.Controllers
         }
 
         [HttpGet]
+        [BasicAuthentication]
         public IEnumerable<FraudTransactions.Models.Transaction> GetLast10()
         {
             return _repository.GetLast10();
         }
 
         [HttpGet]
+        [BasicAuthentication]
         public FraudTransactions.Models.Transaction GetTransaction(int id)
         {
             FraudTransactions.Models.Transaction transaction = _repository.Get(id);
@@ -43,6 +48,7 @@ namespace FraudTransactions.Controllers
             return transaction;
         }
         [HttpGet]
+        [BasicAuthentication]
         public List<FraudTransactions.Models.Transaction> GetTransactionSearch(bool isFraud,string nameDest,string op,string term)
         {
             List<FraudTransactions.Models.Transaction> transaction = _repository.GetBySearch(isFraud,nameDest,op, term);
@@ -52,6 +58,8 @@ namespace FraudTransactions.Controllers
             }
             return transaction;
         }
+        [HttpPost]
+        [BasicAuthentication]
         public HttpResponseMessage PostTransaction(FraudTransactions.Models.Transaction transaction)
         {
             transaction = _repository.Add(transaction);
@@ -61,6 +69,7 @@ namespace FraudTransactions.Controllers
             return response;
         }
 
+        [BasicAuthentication]
         public void PutTransaction(FraudTransactions.Models.Transaction transaction)
         {
             //transaction.Id = id;
@@ -70,6 +79,7 @@ namespace FraudTransactions.Controllers
             }
         }
 
+        [BasicAuthentication]
         public HttpResponseMessage DeleteTransaction(int id)
         {
             _repository.Remove(id);

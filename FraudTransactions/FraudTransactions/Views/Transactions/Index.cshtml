@@ -33,10 +33,7 @@
     });
 }
 
-@if (Request.IsAuthenticated && (User.IsInRole("Assistant") || User.IsInRole("Administrator")))
-{
-    @Html.ActionLink("REGISTER BANK TRANSACTIONS", "Create", "Transactions")
-}
+
 <div align="center">
     @if (Request.IsAuthenticated && (User.IsInRole("Manager") || User.IsInRole("Superintendent") || User.IsInRole("Administrator")))
     {
@@ -131,7 +128,7 @@
         {
             foreach (var Tran in ViewBag.transactions)
             {
-                <tr class="btn-success">
+                <tr>
                     <td>
                         @Tran.Id
                     </td>
@@ -173,7 +170,9 @@
                     {
 
                         <td>
-                            <a href="@Url.Action("Edit","Transactions",new {id= Tran.Id})">MARK AS FRAUD</a>
+                            <a href="@Url.Action("Edit","Transactions",new {id= Tran.Id})" style="
+    color: RED;
+">MARK AS FRAUD</a>
                         </td>
                     }
 

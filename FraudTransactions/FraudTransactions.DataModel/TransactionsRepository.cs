@@ -7,6 +7,9 @@ using System.Web;
 
 namespace FraudTransactions.DataModel
 {
+    /// <summary>
+    /// Repository for all the operations regarding transactions operations, it uses EF
+    /// </summary>
     public class TransactionRepository : ITransactionRepository
     {
         private TransactionStore db = new TransactionStore(System.Configuration.ConfigurationManager.ConnectionStrings["TransactionsDBEntities1"].ConnectionString);

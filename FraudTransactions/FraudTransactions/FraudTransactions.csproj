@@ -199,10 +199,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiIdentity.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BasicAuthenticationFilter.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\TransactionsApiController.cs" />

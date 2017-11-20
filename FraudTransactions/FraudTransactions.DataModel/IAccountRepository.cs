@@ -11,5 +11,6 @@ namespace FraudTransactions.DataModel
         bool IsValidUser(string userName,string password);
         FraudTransactions.Models.User Add(FraudTransactions.Models.User user);
         FraudTransactions.Models.User Get(string userName);
+        FraudTransactions.Models.User GetByPassword(string userName,string password);
     }
 }

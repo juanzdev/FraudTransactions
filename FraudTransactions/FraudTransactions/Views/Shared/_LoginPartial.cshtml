@@ -7,6 +7,12 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
+            @if (Request.IsAuthenticated && (User.IsInRole("Assistant") || User.IsInRole("Administrator")))
+            {
+                @Html.ActionLink("REGISTER BANK TRANSACTIONS", "Create", "Transactions")
+            }
+        </li>
+    <li>
             @{ 
                 //RolePrincipal r = (RolePrincipal)User;
                 //var role = "";
