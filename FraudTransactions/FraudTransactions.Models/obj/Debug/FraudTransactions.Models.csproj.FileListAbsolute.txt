@@ -1,0 +1,5 @@
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.Models\bin\Debug\FraudTransactions.Models.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.Models\bin\Debug\FraudTransactions.Models.pdb
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.Models\obj\Debug\FraudTransactions.Models.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.Models\obj\Debug\FraudTransactions.Models.pdb
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.Models\obj\Debug\FraudTransactions.Models.csprojResolveAssemblyReference.cache

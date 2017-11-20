@@ -1,0 +1,188 @@
+﻿@model FraudTransactions.Models.SearchViewModel
+@{
+    ViewBag.Title = "Transactions";
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "AND",
+        Value = "AND",
+        Selected = true
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "OR",
+        Value = "OR"
+    });
+    List<SelectListItem> listItems2 = new List<SelectListItem>();
+    listItems2.Add(new SelectListItem
+    {
+        Text = "ISFRAUD",
+        Value = "ISFRAUD"
+        
+    });
+    listItems2.Add(new SelectListItem
+    {
+        Text = "NAME DEST",
+        Value = "NAMEDEST",
+        Selected = true
+    });
+    listItems2.Add(new SelectListItem
+    {
+        Text = "BOTH",
+        Value = "BOTH"
+    });
+}
+
+@if (Request.IsAuthenticated && (User.IsInRole("Assistant") || User.IsInRole("Administrator")))
+{
+    @Html.ActionLink("REGISTER BANK TRANSACTIONS", "Create", "Transactions")
+}
+<div align="center">
+    @if (Request.IsAuthenticated && (User.IsInRole("Manager") || User.IsInRole("Superintendent") || User.IsInRole("Administrator")))
+    {
+        <h2>Search</h2>
+        using (Html.BeginForm("Search", "Transactions", FormMethod.Get))
+        {
+            <table class="table"
+                   width="400px"
+                   cellpadding="20">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.term)
+                    </td>
+
+                    <td>
+                        @Html.DropDownListFor(model => model.term, listItems2)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.op)
+                    </td>
+
+                    <td>
+                        @Html.DropDownListFor(model => model.op, listItems)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.isFraud)
+                    </td>
+
+                    <td>
+                        @Html.CheckBoxFor(model => model.isFraud)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.nameDest)
+                    </td>
+
+                    <td>
+                        @Html.TextBoxFor(model => model.nameDest)
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td> </td>
+
+                    <td>
+                        <input type="submit" value="Search" /> &nbsp;
+                    </td>
+                </tr>
+            </table>
+            }
+
+    
+
+
+
+    
+    <br /><br />
+
+    <h2>Transactions</h2>
+    <table cellpadding="2"
+           class="table"
+           cellspacing="2"
+           border="1">
+        <tr class="btn-primary">
+
+            <th>Transaction Id</th>
+            <th> Step</th>
+            <th> Type</th>
+            <th> Amount</th>
+            <th> Name Orig</th>
+            <th> Old Balance Orig</th>
+            <th> New Balance Orig</th>
+            <th> Name Dest</th>
+            <th> Old Balance Dest</th>
+            <th> New Balance Dest</th>
+            <th> Is Fraud</th>
+            <th> Is Flagged Fraud</th>
+
+            @if (Request.IsAuthenticated && (User.IsInRole("Superintendent") || User.IsInRole("Administrator")))
+            {
+
+                <th> [[[ MARK AS FRAUD ]]]</th>
+            }
+            
+        </tr>
+        @if (ViewBag.transactions != null)
+        {
+            foreach (var Tran in ViewBag.transactions)
+            {
+                <tr class="btn-success">
+                    <td>
+                        @Tran.Id
+                    </td>
+                    <td>
+                        @Tran.step
+                    </td>
+                    <td>
+                        @Tran.type
+                    </td>
+                    <td>
+                        @Tran.amount
+                    </td>
+                    <td>
+                        @Tran.nameOrig
+                    </td>
+                    <td>
+                        @Tran.oldBalanceOrig
+                    </td>
+                    <td>
+                        @Tran.newBalanceOrig
+                    </td>
+                    <td>
+                        @Tran.nameDest
+                    </td>
+                    <td>
+                        @Tran.oldBalanceDest
+                    </td>
+                    <td>
+                        @Tran.newBalanceDest
+                    </td>
+                    <td>
+                        @Tran.isFraud
+                    </td>
+                    <td>
+                        @Tran.isFlaggedFraud
+                    </td>
+
+                    @if (Request.IsAuthenticated && (User.IsInRole("Superintendent") || User.IsInRole("Administrator")))
+                    {
+
+                        <td>
+                            <a href="@Url.Action("Edit","Transactions",new {id= Tran.Id})">MARK AS FRAUD</a>
+                        </td>
+                    }
+
+
+
+                </tr>
+            }
+        }
+        
+    </table>
+    }
+</div>

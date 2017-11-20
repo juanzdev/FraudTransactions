@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TransactionsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TransactionsDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Roles" EntityType="TransactionsDBModel.Role" />
+    <EntitySet Name="Transactions" EntityType="TransactionsDBModel.Transaction" />
+    <EntitySet Name="Users" EntityType="TransactionsDBModel.User" />
+    <AssociationSet Name="FK_Users_Roles" Association="TransactionsDBModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="TransactionsDBModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="step" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <Property Name="nameOrig" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oldBalanceOrig" Type="Int32" Nullable="false" />
+    <Property Name="newBalanceOrig" Type="Int32" Nullable="false" />
+    <Property Name="nameDest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oldBalanceDest" Type="Int32" Nullable="false" />
+    <Property Name="newBalanceDest" Type="Int32" Nullable="false" />
+    <Property Name="isFraud" Type="Boolean" Nullable="false" />
+    <Property Name="isFlaggedFraud" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="TransactionsDBModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Users_Roles">
+    <End Type="TransactionsDBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="TransactionsDBModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

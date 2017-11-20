@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TransactionsDBModelStoreContainer" CdmEntityContainer="TransactionsDBEntities1">
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="TransactionsDBModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Role1" ColumnName="Role" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="TransactionsDBModel.Transaction">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="isFlaggedFraud" ColumnName="isFlaggedFraud" />
+          <ScalarProperty Name="isFraud" ColumnName="isFraud" />
+          <ScalarProperty Name="newBalanceDest" ColumnName="newBalanceDest" />
+          <ScalarProperty Name="oldBalanceDest" ColumnName="oldBalanceDest" />
+          <ScalarProperty Name="nameDest" ColumnName="nameDest" />
+          <ScalarProperty Name="newBalanceOrig" ColumnName="newBalanceOrig" />
+          <ScalarProperty Name="oldBalanceOrig" ColumnName="oldBalanceOrig" />
+          <ScalarProperty Name="nameOrig" ColumnName="nameOrig" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="step" ColumnName="step" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TransactionsDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

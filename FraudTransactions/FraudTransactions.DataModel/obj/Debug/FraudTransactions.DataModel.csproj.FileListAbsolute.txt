@@ -1,0 +1,12 @@
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\obj\Debug\FraudTransactions.DataModel.csprojResolveAssemblyReference.cache
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\FraudTransactions.DataModel.dll.config
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\FraudTransactions.DataModel.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\FraudTransactions.DataModel.pdb
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\EntityFramework.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\FraudTransactions.Models.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\FraudTransactions.Models.pdb
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\EntityFramework.xml
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\obj\Debug\FraudTransactions.DataModel.dll
+C:\DEV\zemoga\2\FraudTransactions\FraudTransactions.DataModel\obj\Debug\FraudTransactions.DataModel.pdb
