@@ -1,8 +1,5 @@
 # FraudTransactions
 ## Synthetic Financial Manager System For Fraud Transactions ASP MVC
-### Author: Juan Camilo Zapata
-### Phone : +57 3164380458
-
 ---
 
 To deploy the entire solution do the following steps:
